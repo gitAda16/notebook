@@ -134,7 +134,7 @@ var	f1 = new Foo();
 
 constructor属性也是对象才拥有的，它是从一个对象指向一个函数，含义就是指向该对象的构造函数，每个对象都有构造函数，从图中可以看出Function这个对象比较特殊，它的构造函数就是它自己（因为Function可以看成是一个函数，也可以是一个对象），所有函数最终都是由Function()构造函数得来，所以constructor属性的终点就是Function()。
 
-![1551347756078](D:\source\git\notebook\notebook\js\prototypeconstruct.png)
+![1551347756078](prototypeconstruct.png)
 
 以上内容来自[prototype](https://blog.csdn.net/cc18868876837/article/details/81211729)
 

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Examples</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+        <script type="text/javascript">
+            // 题 1：首字母改大写
+            function firstLetterToUpperCase(str){
+                if(!Object.prototype.toString.call(str) === "[object String]"){
+                    return;
+                }
+                if(str.length<=0) return;
+                var code = str.charCodeAt(0);
+                var rt
+                if(code>=97 && code<= 122){
+                    code -=32;
+                    rt = String.fromCharCode(code)+str.slice(1);
+                    // rt = str.replace(/^[a-z]/,String.fromCharCode(code));
+                }else{
+                    rt = str;
+                }
+                console.log(rt);
+            }
+            // 题 2：去字符串头尾空格
+            function trim(str){
+                if(!Object.prototype.toString.call(str) === "[object String]"){
+                    return;
+                }
+                if(str.length<=0) return;
+                var rt = str.replace(/^ | $/g,"1");
+                alert(rt);
+                return rt;
+            }
+
+            // 题 3：将字符串中 _ 后面的小写字母变大写，并且删除 _
+            function toCamelStyle(str){
+                if(!Object.prototype.toString.call(str) === "[object String]"){
+                    return;
+                }
+                if(str.length<=0) return;
+                var rt = str.replace(/_./g,function(match,offset){
+                    if(offset==0){
+                        return match;
+                    }
+                    return match.replace('_','').toUpperCase();
+                });
+                alert(rt);
+                return rt;
+            }
+            // toCamelStyle("abc_bcd");
+            // toCamelStyle("a_3_c_d_ef");
+            // toCamelStyle('_a_b_c_d_ef');
+
+            // 题 4：删除字符串中所有的数字
+            function removeNum(str){
+                if(!Object.prototype.toString.call(str) === "[object String]"){
+                    return;
+                }
+                if(str.length<=0) return;
+                var rt = str.replace(/\d/g,'');
+                alert(rt);
+                return rt;
+            }
+            // removeNum('a23b434c45');
+            // removeNum('343abd8c');
+
+            // 题 5: 反转字符串
+            function reverse(str){
+                if(!Object.prototype.toString.call(str) === "[object String]"){
+                    return;
+                }
+                if(str.length<=0) return;
+                var strArray = [].slice.call(str);
+                for(var i=0,j=strArray.length;i<j;i++,j--){
+                    var c = strArray[i];
+                    strArray[i] = strArray[j];
+                    strArray[j] = c;
+                }
+                var rt = strArray.join('');
+                alert(rt);
+                return rt;
+            }
+            // 题 6: 统计字符串中各字符在字符串中出现的数量
+            function caculateExistNum(str){
+                if(!Object.prototype.toString.call(str) === "[object String]"){
+                    return;
+                }
+                if(str.length<=0) return;
+                var obj = {};
+                for(var i=0;i<str.length;i++){
+                    var c = str[i];
+                    if(!obj.hasOwnProperty(c)){
+                        obj[c]=1;
+                    }else{
+                        obj[c]+=1;
+                    }
+                }
+                console.log(obj);
+                return obj;
+            }
+            caculateExistNum('aaabbc00');
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

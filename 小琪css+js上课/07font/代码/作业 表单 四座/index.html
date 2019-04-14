@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-Hans">
+    <title>Sizer注册页面</title>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Oleo+Script:400,700'>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #f8f8f8 url("images/1.jpg") left top no-repeat;
+            text-align: left;
+            font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+            color: #555;
+            font-size: 16px;
+            font-weight: 400;
+            background-size:cover
+        }
+        a:hover{
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+<body>
+
+        <!-- 顶部导航栏 -->
+        <style type="text/css">
+            .row{
+                margin-left: 20%;
+            }
+            .header{
+                margin: 0 auto;
+                border-top: 3px solid red;
+                background-color: #FFFAF0  ;
+                padding-top: 20px;
+                padding-bottom: 2px;
+            }
+            .logo h1{
+                padding-left: 50px;
+                font-family: 'Oleo Script', cursive;
+                font-size: 36px;
+                font-weight: 400;
+            }
+            .logo h1 a{
+                text-decoration: none;
+                color: #555;
+
+            }
+
+        </style>
+        <div class="header">
+                <div class="row">
+                    <div class="logo">
+                        <h1><a href="">Sizer <span>.</span></a></h1>
+                    </div>
+                </div>
+        </div>
+
+        <!-- 中间内容部分 -->
+        <style type="text/css">
+            #sizerregister{
+                background: #f8f8f8 url("images/2.jpg") left top no-repeat;
+                width: 400px;
+                border-bottom: 2px #A9A9A9 dashed;
+                margin: 100px auto;
+                padding: 20px;
+                border-radius: 18px;
+            }
+            #sizerregister h2{
+                margin-bottom: 25px;
+                padding-bottom: 15px;
+                border-bottom: 2px #A9A9A9 dashed;
+                font-size: 30px;
+                font-weight: 400;
+                text-align: center;
+            }
+
+
+            #sizerregister input {
+                width: 95%;
+                height: 30px;
+                border: 1px solid #ddd;
+                border-radius: 2px;
+                font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+                color: #888;
+                font-size: 16px;
+                margin: 10px 0 10px 5px;
+                border-radius: 8px;
+                padding-left: 10px;
+            }
+            #sizerregister:focus{
+                border: 1px solid #ccc;
+            }
+
+            #sizerregister label {
+                margin: 7px 0 10px 5px;
+                padding-left: 2px;
+                font-size: 16px;
+                text-align: left;
+            }
+
+            #sizerregister #submit{
+                cursor: pointer;
+                width: 60%;
+                height: 42px;
+                margin-top: 25px;
+                margin-left: 74px;
+                padding: 0;
+                background: #eb4141;
+                border: 0;
+                font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+                font-size: 16px;
+                font-weight: 400;
+                color: #fff;
+            }
+
+
+        </style>
+        <div id="sizerregister">
+            <h2>Register to Sizer</h2>
+            <div id="sizerfrom">
+                <form action="" method="post">
+                        <label for="firstname">First Name</label>
+                        <input type="text" id="firstname" name="firstname" placeholder="enter your first name...">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" id="lastname" name="lastname" placeholder="enter your first name...">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="enter your username...">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" placeholder="enter your email...">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="enter your password...">
+                        <input type="submit" id="submit" name="submit" value="REGISTER">
+                    </form>
+            </div>
+        </div>
+
+
+
+</body>
+</html>

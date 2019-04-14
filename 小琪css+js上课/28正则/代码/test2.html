@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+</head>
+
+<body>
+</body>
+<script type="text/javascript">
+//目标字符串
+var source = "http://reg-test-server:8080/download/file1.html# ";
+// var source = "http://reg-test-server:8080:";
+//正则式
+var regex = /(\w+):\/\/([^/:]+)(:\d+)?([^# :]*)/;
+console.log(regex.exec(source));
+
+// string regex = @ "(\w+):\/\/([^/:]+)(:\d+)?([^# :]*)";
+// Regex regUrl = new Regex(regex);
+// //匹配正则表达式
+// Match m = regUrl.Match(source);
+// Console.WriteLine(m.Success);
+// if (m.Success) {
+//     //捕获组存放在Match.Groups集合中，索引值从1开始，索引0处为匹配的整个字符串值
+//     //按“组号 : 捕获内容”的格式显示
+//     for (int i = 0; i < m.Groups.Count; i++) {
+//         Console.WriteLine(string.Format("{0} : {1}", i, m.Groups[i]));
+//     }
+// }
+// Console.ReadLine();
+var test = "a1bd";
+var pa = /a(?:\d)/g;
+console.log(pa.exec(test));
+console.log(test.replace(pa,','));
+console.log(RegExp['$1']);
+</script>
+
+</html>

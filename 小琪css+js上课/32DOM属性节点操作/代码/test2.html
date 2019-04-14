@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Examples</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+        <style type="text/css">
+            .box{
+                width:100px;
+                height:100px;
+                background-color: pink;
+                padding:10px;
+                border:5px solid black;
+                overflow: scroll;
+            }
+        </style>
+        <script type="text/javascript">
+            window.onload=function(){
+                console.log(box.offsetWidth,box.clientWidth,box.scrollWidth);
+                console.log(box.offsetParent);
+            }
+        </script>
+    </head>
+    <body>
+        <div id="box" class="box">123 asdf fdsa fda sdf fdsa fda fdas  fda fda fda sdf a sdf sadf da sa fsd sd </div>
+    </body>
+</html>

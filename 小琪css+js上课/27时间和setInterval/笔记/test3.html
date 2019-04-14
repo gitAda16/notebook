@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Examples</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+
+    </head>
+    <body>
+        <p id="test"></p>
+    </body>
+    <script type="text/javascript">
+        var t1 = new Date("2018-02-02");
+        var t2 = new Date("2018-02-01");
+        var el = document.getElementById("test");
+        var d = t1-t2;
+        var day = (d/1000/60/60/24)|0;
+        var hour = (d/1000/60/60%24)|0;
+        var min = (d/1000/60%60)|0;
+        var sec = (d/1000%60)|0;
+        el.innerText = day+"天"+hour+"时"+min+"分钟"+sec+"秒";
+    </script>
+</html>

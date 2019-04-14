@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>三列布局 中间不定 两边定</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+        <style type="text/css">
+            /*
+            ------------------------------------------------
+            全局
+            ------------------------------------------------
+            */
+            .left{
+                height:100px;
+                background-color:goldenrod;
+            }
+            .right{
+                height:100px;
+                background-color:khaki;
+            }
+            .middle{
+                height:100px;
+                background-color:greenyellow;
+            }
+            .container::after{
+                content: "";
+                display: block;
+                clear:both;
+            }
+            /*
+            ------------------------------------------------
+            flex
+            ------------------------------------------------
+            */
+           .v1{
+                display: flex;
+           }
+           .v1 .left{
+            flex:0 0 100px;
+           }
+           .v1 .middle{
+            flex:1 1 auto;
+           }
+           .v1 .right{
+            flex:0 0 100px;
+           }
+            /*
+            ------------------------------------------------
+            float
+            ------------------------------------------------
+            */
+            /*
+            要设置最小宽度，否则右浮动会被挤下来
+
+            body{
+                min-width: 300px;
+            }*/
+            .v2 .left{
+                width:150px;
+                float: left;
+            }
+            .v2 .right{
+                width:150px;
+                float: right;
+            }
+            .v2 .middle{
+                margin-left: 150px;
+                margin-right: 150px;
+            }
+            /*
+            ------------------------------------------------
+            absolute
+            ------------------------------------------------
+            */
+           .v3{
+                position: relative;
+           }
+           .v3 .left{
+                width:150px;
+                position: absolute;
+                top:0;
+                left:0;
+           }
+           .v3 .right{
+                width:150px;
+                position: absolute;
+                top:0;
+                right:0;
+           }
+           .v3 .middle{
+                margin-left: 150px;
+                margin-right: 150px;
+           }
+        </style>
+    </head>
+    <body>
+        <!--flex-->
+        <!-- <div class="v1 container">
+            <div class="left"></div>
+            <div class="middle">1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0</div>
+            <div class="right"></div>
+        </div> -->
+        <!--float-->
+        <!-- <div class="v2 container">
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="middle">1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0</div>
+        </div> -->
+        <!--position absolut-->
+        <div class="v3 container">
+            <div class="left"></div>
+            <div class="middle">1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0</div>
+            <div class="right"></div>
+        </div>
+    </body>
+</html>

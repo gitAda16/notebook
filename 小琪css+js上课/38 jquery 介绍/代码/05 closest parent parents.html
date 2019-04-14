@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: #333;}
+        ul li{list-style: none;}
+    </style>
+</head>
+<body>
+    <div class="a">
+        1
+        <div class="b">
+            2
+            <div class="b">
+                3
+                <ul class="b">
+                    <li>
+                        <a href="#" class="remove">删除</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+        /*
+
+            parent()
+                只能找一级 不能跨级查找
+            closest()
+                必须要加参数的 可以跨级查找的 找到就不找了
+            parents()
+                不给参数 会把整个文档获取到  直到找不到为止
+         */
+
+        $('.remove').click(function(){
+            // $(this).remove();
+            // $(this).parent().remove();
+            // $(this).closest('.b').remove();
+            // $(this).parents('.b').remove();
+
+        })
+    </script>
+</body>
+</html>

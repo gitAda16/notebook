@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Examples</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+        <script type="text/javascript">
+            window.onload = function(){
+                console.log(box.childNodes);
+                // box.firstChild.style.color='red';
+                var el = first(box);
+                if(el){
+                    el.style.color='red';
+                }
+                function first(el){
+                    var firstEl;
+                    if(el.firstElementChild){
+                        //ie9以上
+                        firstEl = el.firstElementChild;
+                    }else{
+                        firstEl = el.firstChild;
+                        while(firstEl && firstEl.nodeType !=1){
+                            firstEl = firstEl.nextSibling;
+                        }
+                    }
+                    return firstEl;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="box">
+            sd
+            <p>123</p>
+        </div>
+
+    </body>
+</html>

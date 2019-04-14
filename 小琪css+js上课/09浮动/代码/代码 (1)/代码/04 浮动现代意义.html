@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>两列</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: #333;}
+        ul li{list-style: none;}
+        .box{width: 800px;border: 10px solid #f60;overflow: hdden;}
+        .left{width: 50%;height: 400px;background-color: red;float: left;}
+        .right{width: 50%;height: 500px;background-color: green;float: right;}
+        .san{width: 100px;height: 500px;background-color: black;}
+        /*.clearfix{clear: both;}*/
+
+        .box::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="left"></div>
+        <div class="right">asdsadfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+        <!-- <div class="clearfix"></div> -->
+    </div>
+    <!-- <div class="san"></div> -->
+
+
+    <div id="box">
+        <div></div>
+    </div>
+
+    <!--
+
+        父容器塌陷了
+        解决?
+            1. 父容器同样去浮动    包裹
+            2. 给父容器加溢出隐藏  包裹  (包裹中 翻云覆雨 也不会影响到外界)
+            3. 清除浮动            浮动并没有失效 让浏览器认为这个地方还是保留原来的文档流排列
+                添加一个元素 clear:both / right / left
+                伪元素       ::after
+
+
+            以后 子元素有浮动 给父元素加 clearfix 不要让它塌陷
+    -->
+</body>
+</html>

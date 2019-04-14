@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: #333;}
+        ul li{list-style: none;}
+        #box{width: 100px;height: 100px;background: red;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        /*
+
+            简单的预热 js它是什么语言 具有什么能力
+
+            数据类型
+            number string boolean function object undefined
+            typeof 检测数据类型 但是typeof 返回的是字符串
+
+            定义变量 使用
+            var关键字 不能用数字 关键字 保留字做为变量名
+            可以用 字母 $ _做为变量名字 起名字 做到 见名知意
+
+            另外两种简单了解了 let const使用注意点以及var区别
+
+         */
+
+        var boxDom = document.getElementById("box");
+        var num = 10;
+        if(num > 10){
+            boxDom.style.background = "green";
+        }else{
+            boxDom.style.background = "pink";
+        }
+    </script>
+</body>
+</html>

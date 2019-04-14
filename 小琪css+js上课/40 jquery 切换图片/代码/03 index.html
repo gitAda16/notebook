@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    ul li {
+        list-style: none;
+    }
+
+    body {
+        background-color: #333;
+    }
+
+    .wrap {
+        position: relative;
+        width: 900px;
+        margin: 30px auto;
+        overflow: hidden;
+    }
+
+    .list {
+        position: relative;
+        height: 550px;
+        width: 1000%;
+    }
+
+    .list li {
+        width: 900px;
+        height: 450px;
+        float: left;
+    }
+
+    .list li img {
+        width: 900px;
+        height: 550px;
+        display: block;
+    }
+
+    .btn {
+        position: absolute;
+    }
+
+    .btn li {
+        float: left;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, .5);
+        margin: 3px;
+    }
+
+    .btn li.active {
+        background-color: #f60;
+    }
+
+    .arrow {
+        position: absolute;
+        top: calc(50% - 15px);
+        width: 45px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        font-size: 26px;
+        color: #fff;
+        background: rgba(0, 0, 0, .4);
+        opacity: 0;
+        transition: all 1s
+    }
+
+    .next {
+        right: 0;
+    }
+
+    .wrap:hover .arrow {
+        opacity: 1;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul class="list">
+            <li><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/2.jpg" alt=""></li>
+            <li><img src="img/3.jpg" alt=""></li>
+            <li><img src="img/4.jpg" alt=""></li>
+            <li><img src="img/4.jpg" alt=""></li>
+        </ul>
+        <ul class="btn"></ul>
+        <a href="javascript:void(0)" class="arrow pre">&lt;</a>
+        <a href="javascript:void(0)" class="arrow next">&gt;</a>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+    /*
+                banner
+                    左右移动的
+             */
+
+    $(function() {
+        var $btn = $('.btn'),
+            $img = $('.list'),
+            $width = $img.children()[0].offsetWidth,
+            len = $img.children().length,
+            timer = null,
+            // left移动
+            _index = 0,
+            // 小圆点
+            cIndex = 0;
+        // 生成小圆点
+        for (var i = 0; i < len; i++) {
+            $btn.append($('<li></li>'));
+        }
+        $btn.center().children().first().addClass('active');
+
+        $btn.on('mouseover', 'li', function() {
+            var index = $(this).index();
+            if (index == 0) {
+                $img.children().first().css({
+                    left: 0,
+                    position: 'static' // 站着茅坑不拉屎
+                })
+            }else if(index == len-1){
+                $img.children().first().css({
+                    left: len*$width,
+                    position: 'relative' // 站着茅坑不拉屎
+                })
+            }
+
+            cIndex = index;
+            _index = index;
+            move(index, cIndex);
+        });
+        $('.pre').on('click',function(){
+            // --_index;
+            // --cIndex;
+            if(_index==0){
+                //当前为第一张 把第一张移动到最后一张后面
+                $img.children().first().css({
+                    left:len*$width,
+                    position : 'relative'
+                });
+                $img.css({
+                    left:-len*$width
+                });
+                _index= len-1;
+                cIndex = len-1;
+            }else{
+                if(_index==len-1){
+                    //把第一张图归位；
+                    $img.children().first().css({
+                    left:0,
+                    position : 'static'
+                });
+                }
+                --_index;
+                --cIndex;
+            }
+            move(_index, cIndex);
+        });
+        $('.next').on('click', function() {
+            ++_index;
+            ++cIndex;
+            // 当到最后一张 把第一张定位
+            console.log(_index);
+            if (_index == len - 1) {
+                $img.children().first().css({
+                    left: len * $width,
+                    position: 'relative' // 站着茅坑不拉屎
+                });
+            }
+            // 定位过去了 到了第一张的位置 ul left归0 第一张恢复默认定位 同时 _index = 1
+            if (_index > len) {
+                $img.children().first().css({
+                    left: 0,
+                    position: 'static' // 站着茅坑不拉屎
+                });
+                $img.css('left', 0);
+                _index = 1;
+            }
+            if (_index == len) cIndex = 0;
+            move(_index, cIndex);
+        });
+
+        function move(index, cIndex) {
+            $img.animate({ left: -index * $width });
+            $btn.find('li').eq(cIndex).addClass('active').siblings().removeClass('active');
+        };
+    });
+
+
+
+
+    $.fn.center = function() {
+        var $width = $('.wrap').width() - this.width();
+        return this.each(function() {
+            $(this).css({
+                left: $width / 2,
+                bottom: 10
+            })
+        });
+    };
+    </script>
+</body>
+
+</html>

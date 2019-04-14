@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <script type="text/javascript">
+        // ajax({
+        //     method:'get',
+        //     param:{
+        //         showapi_appid:'30603',
+        //         showapi_sign:'576ED26FD9388C52E967760E63DE73B3',
+        //         page:1,
+        //         num:8
+        //     },
+        //     url:'https://route.showapi.com/181-1',
+        //     success:function(xhr){
+        //         console.log(JSON.parse(xhr.responseText));
+        //     },
+        //     fail:function(xhr){alert(1);}
+        // });
+        //
+        ajax({
+            method:'get',
+            param:{
+                type:'yuantong',
+                postid:'888066753883448180'
+            },
+            url:'http://www.kuaidi100.com/query',
+            success:function(xhr){
+                console.log(JSON.parse(xhr.responseText));
+            },
+            fail:function(xhr){console.log(xhr.responseText);}
+        });
+
+    function ajax(opts) {
+        opts.url+="?"+strParam(opts.param);
+        var xhr = new XMLHttpRequest();
+        // xhr.open('get', 'https://route.showapi.com/181-1?showapi_appid=30603&showapi_sign=576ED26FD9388C52E967760E63DE73B3&page=1&num=8', true);
+        xhr.open(opts.method,opts.url,true);
+        xhr.setRequestHeader('Content-Type','text/html')
+        xhr.send();
+        xhr.onreadystatechange = function() {
+            console.log(xhr.readyState, xhr.status);
+            if(xhr.status == 200){
+                if (xhr.readyState == 4 ) {
+                    opts.success(xhr)
+                }
+            }else{
+                opts.fail(xhr);
+            }
+        }
+    }
+
+    function strParam(obj){
+        var arr = [];
+        for(var k in obj){
+            arr.push(decodeURIComponent(k)+"="+decodeURIComponent(obj[k]));
+        }
+        return arr.join("&");
+    }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

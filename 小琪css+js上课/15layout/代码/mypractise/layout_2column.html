@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>两列 一列定 一列不定</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+        <style type="text/css">
+            /*
+            ------------------------------------------------
+            全局
+            ------------------------------------------------
+            */
+            .left{
+                height:100px;
+                background-color:goldenrod;
+            }
+            .right{
+                height:100px;
+                background-color:khaki;
+            }
+            .container::after{
+                content: "";
+                display: block;
+                clear:both;
+            }
+
+            /*
+            ------------------------------------------------
+            左定 margin
+            ------------------------------------------------
+            */
+           .v1 .left{
+                width:100px;
+                float:left;
+           }
+           .v1 .right{
+                width:100%;
+                margin-left: 100px;
+           }
+
+           /*
+            ------------------------------------------------
+            左定 overflow
+            ------------------------------------------------
+            */
+           .v2 .left{
+                width:100px;
+                float:left;
+           }
+           .v2 .right{
+                overflow: hidden;
+           }
+
+           /*
+            ------------------------------------------------
+            左定 table-cell
+            ------------------------------------------------
+            */
+           .v3 .left{
+                width:100px;
+                display: table-cell;
+           }
+           .v3 .right{
+                display: table-cell;
+           }
+
+           /*
+            ------------------------------------------------
+            右定 margin
+            ------------------------------------------------
+            */
+           .v4 .left{
+                margin-right: 100px;
+           }
+           .v4 .right{
+                width:100px;
+                float:right;
+           }
+
+           /*
+            ------------------------------------------------
+            右定 overflow
+            ------------------------------------------------
+            */
+           .v5 .left{
+                overflow: hidden;
+           }
+           .v5 .right{
+                width:100px;
+                float:right;
+           }
+
+           /*
+            ------------------------------------------------
+            右定 table-cell
+            ------------------------------------------------
+            */
+           .v6 .left{
+                display: table-cell;
+           }
+           .v6 .right{
+                width:100px;
+                display: table-cell;
+           }
+
+           /*
+            ------------------------------------------------
+            左定 flex
+            ------------------------------------------------
+            */
+           .v7 {
+              display: flex;
+           }
+           .v7 .left{
+                /*flex:0 0 100px;*/
+                flex:100px;
+           }
+           .v7 .right{
+
+           }
+        </style>
+    </head>
+    <body>
+    <!--左定 margin-->
+    <!-- <div class="v1 container">
+        <div class="left"></div>
+        <div class="right">1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0</div>
+    </div> -->
+    <!--左定 overflow-->
+    <!-- <div class="v2 container">
+        <div class="left"></div>
+        <div class="right">1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0</div>
+    </div> -->
+    <!--左定 table-cell-->
+    <!-- <div class="v3 container">
+        <div class="left"></div>
+        <div class="right">1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0</div>
+    </div> -->
+    <!--右定 margin-->
+    <!-- <div class="v4 container">
+        <div class="right"></div>
+        <div class="left">1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0</div>
+    </div> -->
+    <!--右定 overflow-->
+    <!-- <div class="v5 container">
+        <div class="right"></div>
+        <div class="left">1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0</div>
+    </div> -->
+    <!--右定 table-cell-->
+    <!-- <div class="v6 container">
+        <div class="left">1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0</div>
+        <div class="right"></div>
+    </div> -->
+    <!--左定 flex-->
+    <div class="v7 container">
+        <div class="left"></div>
+        <div class="right">1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0</div>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    ul li {
+        list-style: none;
+    }
+
+    .list {
+        width: 404px;
+        margin: 100px auto;
+    }
+
+    .list li {
+        position: relative;
+        float: left;
+        width: 100px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        color: #fff;
+        background-color: #f60;
+        border-right: 1px solid;
+        cursor: pointer;
+    }
+
+    .list .menu {
+        position: absolute;
+        top: 30px;
+        transform-origin: top center;
+        transform: scaleY(0) rotateY(-180deg);
+        transition: all 0.5s
+    }
+
+    .list .menu li {
+        width: 100px;
+        height: 30px;
+        background-color: #E90EC2;
+        color: #fff;
+        text-align: center;
+        line-height: 30px;
+    }
+
+    .list li:hover .menu {
+        transform: scaleY(1) rotateY(0deg);
+    }
+    </style>
+</head>
+
+<body>
+    <ul class="list">
+        <li>
+            <span>喵星人</span>
+            <ul class="menu">
+                <li>html</li>
+                <li>css</li>
+                <li>java</li>
+                <li>html</li>
+                <li>css</li>
+                <li>java</li>
+            </ul>
+        </li>
+        <li>
+            <span>巷子深</span>
+            <ul class="menu">
+                <li>html</li>
+                <li>css</li>
+                <li>java</li>
+            </ul>
+        </li>
+        <li>
+            <span>大西瓜</span>
+            <ul class="menu">
+                <li>html</li>
+                <li>css</li>
+                <li>java</li>
+                <li>html</li>
+                <li>css</li>
+                <li>java</li>
+            </ul>
+        </li>
+        <li>
+            <span>高闯</span>
+            <ul class="menu">
+                <li>html</li>
+                <li>css</li>
+                <li>java</li>
+            </ul>
+        </li>
+    </ul>
+    <!--
+        导航结合 transform
+        表单
+        input: valid 验证
+               required 必填项
+
+
+    -->
+</body>
+
+</html>

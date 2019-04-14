@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+</head>
+
+<body>
+</body>
+<script type="text/javascript">
+function createXMLDom() {
+    var version = [
+        "MSXML2.DOMDocument.6.0",
+        "MSXML2.DOMDocument.3.0",
+        "MSXML2.DOMDocument"
+    ];
+    for (var i = 0; i < version.length; i++) {
+        try {
+            var xmlDom = new ActiveXObject(version[i]);
+        } catch (e) {}
+    }
+    return xmlDom;
+}
+var xmlDom = createXMLDom();
+xmlDom.load('p.xml');
+// xmlDom.loadXML("<person>12</person>");
+// 监听xml文档是否加载完成
+xmlDom.onreadystatechange = function() {
+    if (xmlDom.readyState === 4) { //加载完成
+        if (xmlDom.parseError === 0) {//xml格式正确返回0
+            alert(xmlDom.xml);
+        }else{
+            /*
+            错误的行号 位置 信息 解释
+             */
+            var error = xmlDom.parseError;
+            throw new Error("行号:"+error.line+"\n"+
+                "位置"+error.linepos+"\n"+
+                "信息"+error.errorCode+"\n"+
+                "解释"+error.reason);
+        }
+    }
+
+}
+</script>
+
+</html>

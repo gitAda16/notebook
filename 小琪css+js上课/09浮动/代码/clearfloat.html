@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>clearflot</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+        <style type="text/css">
+            .out{
+                width:200px;
+                height:100px;
+                background-color: yellow;
+            }
+            .innl{
+                width:50px;
+                height:50px;
+                background-color: purple;
+                float:left;
+            }
+            .clearfix{
+                clear:right;
+                width:60px;
+                height:60px;
+                background-color: red;
+            }
+            .innr{
+                width:50px;
+                height:80px;
+                background-color: pink;
+                float:right;
+            }
+            .other{
+                width:50px;
+                height:50px;
+                background-color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="out">
+            <div class="innl"></div>
+
+            <div class="innr"></div>
+            <div class="clearfix">ddd</div>
+
+        </div>
+        <div class="other"></div>
+    </body>
+</html>

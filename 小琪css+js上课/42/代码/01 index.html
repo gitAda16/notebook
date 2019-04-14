@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    ul li {
+        list-style: none;
+    }
+
+    .wrap {
+        width: 440px;
+        position: relative;
+        margin: 30px auto;
+    }
+
+    .wrap div {
+        width: 98px;
+        height: 98px;
+        border:1px solid red;
+        margin: 5px;
+        line-height: 98px;
+        text-align: center;
+        color: #FFF;
+        background: #333;
+        float: left;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+        <div>11</div>
+        <div>12</div>
+        <div>13</div>
+        <div>14</div>
+        <div>15</div>
+        <div>16</div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+    /*
+                换位置
+                    1. 布局调整 浮动 变成定位的
+                    2. 给所有的添加拖拽的效果
+                    3. 检测周围 离哪一个方块近的
+                        检测碰到其它的
+                        检测距离 找到最短的那个
+                    4. 换位置 数组中的位置也要去换
+             */
+    $(function() {
+
+        // 1. 创建一个数组 用于存储位置信息
+        var arr = [];
+        var $drag = $('.wrap div');
+        var index = 1;
+        $.each($drag, function() {
+            arr.push({ top: $(this).position().top, left: $(this).position().left });
+        });
+
+        $.each(arr, function(index) {
+            $drag.eq(index).css({
+                position: 'absolute',
+                left: this.left,
+                top: this.top,
+                zIndex: index
+            })
+        });
+
+        // 添加拖拽事件
+        $drag.on('mousedown', function(e) {
+            var posx = e.pageX - this.offsetLeft;
+            var posy = e.pageY - this.offsetTop;
+            var $obj = $(this);
+            $(document).on('mousemove', function(e) {
+                var x = e.pageX - posx;
+                var y = e.pageY - posy;
+                $obj.css({
+                    left: x,
+                    top: y,
+                    zIndex: ++index
+                })
+            })
+            $(document).on('mouseup', function() {
+                var minObj = distance($drag, $obj);
+                // 松手了换位置
+                if (minObj) {
+                    $(minObj).stop().animate({ left: arr[$obj.index()].left, top: arr[$obj.index()].top })
+                    $obj.stop().animate({ left: arr[$(minObj).index()].left, top: arr[$(minObj).index()].top })
+                    swrap(arr, $obj.index(), $(minObj).index());
+                } else {
+                    $obj.stop().animate({ left: arr[$obj.index()].left, top: arr[$obj.index()].top })
+                };
+                $(document).off();
+            })
+            return false;
+        });
+    });
+
+
+    function swrap(arr, a, b) {
+        var temp = arr[b];
+        arr[b] = arr[a];
+        arr[a] = temp;
+    }
+
+
+    function pz(obj1, obj2) {
+        var T = obj1.offsetTop;
+        var L = obj1.offsetLeft;
+        var R = obj1.offsetWidth + L;
+        var B = obj1.offsetHeight + T;
+
+        var T1 = obj2.offsetTop;
+        var L1 = obj2.offsetLeft;
+        var R1 = obj2.offsetWidth + L1;
+        var B1 = obj2.offsetHeight + T1;
+        return !(R < L1 || B < T1 || L > R1 || T > B1);
+    };
+
+    // 在一个数组中找值最小的那个
+    function distance($drag, $dom) {
+        var index = -1;
+        var max = Number.MAX_VALUE;
+        for (var i = 0; i < $drag.length; i++) {
+            if (pz($drag[i], $dom[0]) && $drag[i] != $dom[0]) {
+                var a = $drag[i].offsetLeft - $dom[0].offsetLeft;
+                var b = $drag[i].offsetTop - $dom[0].offsetTop;
+                var c = Math.pow(a, 2) + Math.pow(b, 2);
+                if (c < max) {
+                    max = c;
+                    index = i;
+                }
+            }
+        }
+        return $drag[index];
+    }
+
+    // $.fn.drag = function(){
+
+    // }
+    </script>
+</body>
+
+</html>

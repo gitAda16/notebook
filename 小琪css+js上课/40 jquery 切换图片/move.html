@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Examples</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+        <style type="text/css">
+            *{
+                margin:0;
+                padding:0;
+            }
+            ul{
+                list-style: none;
+            }
+            .wrap{
+                width:900px;
+                margin:5px auto;
+                position: relative;
+            }
+            .list{
+                position: relative;
+                height:550px;
+                overflow: hidden;
+            }
+            .list>li{
+                position: absolute;
+            }
+            .list>li img{
+                width:900px;
+                height:550px;
+                display:block;
+            }
+            .btn{
+                position: absolute;
+                bottom:30px;
+            }
+            .btn>li{
+                float:left;
+                width:8px;
+                height:8px;
+                border-radius: 50%;
+                background-color: rgba(255,255,255,0.5);
+                margin:5px;
+                cursor:pointer;
+            }
+            .arrow{
+                background-color: rgba(127,127,127,0.3);
+                display: block;
+                position: absolute;
+                color:#333;
+                width:30px;
+                height:30px;
+                text-align: center;
+                line-height: 30px;
+                text-decoration: none;
+                top:calc(50% - 15px);
+                opacity: 0;
+            }
+            .wrap:hover .arrow{
+                opacity: 1;
+            }
+            .pre{
+                left:10px;
+            }
+            .next{
+                right:10px;
+            }
+            .list .current{
+                /*display: block;*/
+            }
+            .btn>li:hover{
+                background-color: yellow;
+            }
+            .btn .current{
+                background-color: red;
+            }
+        </style>
+        <script type="text/javascript" src="../jquery-3.3.1.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                //生成按钮
+                var $imgli = $('.list>li');
+                var $btn = $('.btn');
+                for(var i=0;i<$imgli.length;i++){
+                    if($($imgli[i]).hasClass('current')){
+                        $btn.append($('<li></li>').addClass('current'));
+                    }else{
+                         $btn.append($('<li></li>'));
+                    }
+                }
+                var $wrap = $('.wrap')
+                $btn.css({
+                    left:($wrap.width() - $btn.width())/2
+                });
+
+                //初始化图片位置
+                function listImg(isAnimate){
+                    var $currentImgLi=$('.list>li[class="current"]');
+                    var i=1;
+                    if(isAnimate){
+                        $currentImgLi.animate({left:0},{duration:1000});
+                    }else{
+                        $currentImgLi.css({
+                            left:0
+                        });
+                    }
+                    $currentImgLi.prevAll().each(function(){
+                        var t = $(this);
+                        if(isAnimate){
+                            t.animate({left:0-t.width()*i},{duration:1000});
+                        }else{
+                            t.css({
+                                left:0-t.width()*i
+                            });
+                        }
+                        i++;
+                    });
+                    i=1;
+                    $currentImgLi.nextAll().each(function(){
+                        var t = $(this);
+                        if(isAnimate){
+                            t.animate({left:0+t.width()*i},{duration:1000});
+                        }else{
+                            t.css({
+                                left:0+t.width()*i
+                            });
+                        }
+                        i++;
+                    });
+                }
+
+                listImg(false);
+
+                function move(direction){
+                    var $currentImg = $('.list>li[class="current"]');
+                    var $toImg;
+                    if(direction>0){
+                        //向右移动
+                        var $toImg = $currentImg.next();
+                        if($toImg.length==0){
+                            $toImg = $('.list>li').first();
+                            $currentImg.after($toImg);
+                            listImg(false);
+                        }
+                    }else if(direction<0){
+                        //向左移动
+                        var $toImg = $currentImg.prev();
+                        if($toImg.length==0){
+                            $toImg = $('.list>li').last();
+                            $currentImg.before($toImg);
+                            listImg(false);
+                        }
+                    }else{
+                        return;
+                    }
+                    $currentImg.removeClass('current');
+                    $toImg.addClass("current");
+                    var index = $('.list>li').index($toImg);
+                     listImg(true);
+
+                    $('.btn>li[class="current"]').removeClass("current");
+                    $('.btn>li').eq(index).addClass("current");
+                }
+
+                //点击pre
+                $('.pre').click(function(){
+                    move(-1);
+
+                });
+                //点击next
+                $('.next').click(function(){
+                    move(1);
+                });
+                $('.btn>li').click(function(){
+                    // var t = $(this);
+                    var index = $('.btn>li').index($(this));
+                    $('.list>li[class="current"]').removeClass('current');
+                    $('.list>li').eq(index).addClass('current');
+                    $('.btn>li[class="current"]').removeClass("current");
+                    $('.btn>li').eq(index).addClass("current");
+
+                    listImg(true);
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="wrap">
+            <ul class="list">
+                <li><img src="img/1.jpg" alt="1"></li>
+                <li><img src="img/2.jpg" alt="2"></li>
+                <li><img src="img/3.jpg" alt="3"></li>
+                <li class="current"><img src="img/4.jpg" alt="4"></li>
+                <li><img src="img/5.jpg" alt="5"></li>
+            </ul>
+            <ul class="btn">
+            </ul>
+            <a href="javascript:void(0)" class="arrow pre">&lt;</a>
+            <a href="javascript:void(0)" class="arrow next">&gt;</a>
+        </div>
+    </body>
+</html>

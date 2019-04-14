@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <style type="text/css">
+    .box {
+        width: 400px;
+        height: 250px;
+        border: 2px solid darkblue;
+        background-color: blue;
+        color: white;
+        font: 16px "Zilla", "Open Sans", "Helvetica", "Arial", sans-serif;
+    }
+    </style>
+    <script type="text/javascript">
+
+        window.onload = function(){
+        //     var xel = document.getElementById("x");
+        //     var yel = document.getElementById("y");
+        //     function move(e){
+        //     xel.innerText = e.pageX;
+        //     yel.innerText = e.pageY;
+        // }
+        // var boxDom = document.getElementsByClassName("box")[0];
+        // boxDom.addEventListener('mousemove', move,false);
+        var box = document.querySelector(".box");
+var pageX = document.getElementById("x");
+var pageY = document.getElementById("y");
+
+function updateDisplay(event) {
+  pageX.innerText = event.pageX;
+  pageY.innerText = event.pageY;
+}
+
+box.addEventListener("mousemove", updateDisplay, false);
+box.addEventListener("mouseenter", updateDisplay, false);
+box.addEventListener("mouseleave", updateDisplay, false);
+    }
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <p>
+            Move the mouse around in this box to watch its coordinates change.
+        </p>
+        <p>
+            <code>pageX</code>: <span id="x">n/a</span>
+        </p>
+        <p>
+            <code>pageY</code>: <span id="y">n/a</span>
+        </p>
+    </div>
+</body>
+
+</html>

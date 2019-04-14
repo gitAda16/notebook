@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: #333;}
+        ul li{list-style: none;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+    </div>
+
+    <div class="haha">
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+        /*
+            筛选
+                方法
+         */
+
+        // $('.wrap div').text("我是div");
+        // $('.wrap').find('div').text("我是div")
+        // $('.wrap').children().text('我是div');
+        // $('.wrap').children().eq(2).text('我是div');
+
+
+        // $('.wrap').children().eq(2).nextAll().text('我是div');
+        // $('.wrap').children().eq(2).prevAll().text('我是div');
+        // $('.wrap').children().eq(2).siblings().text('我是div');
+
+        // 4里边写我是div  上边的全部写 我是div prev 下边的写 我是div next
+        // $('.wrap div').eq(3).text('我是div');
+        // $('.wrap div').eq(3).nextAll().text('我是div next');
+        // $('.wrap div').eq(3).prevAll().text('我是div prev');
+
+        // $('.wrap div').eq(3).text('我是div').siblings().text('我是div next').end().prevAll().text('我是div prev');
+
+        // console.log($('.wrap').add($('#box')));
+        // $('.wrap div').add($('.haha div')).css('color', 'red');
+    </script>
+</body>
+</html>

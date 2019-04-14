@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: #333;}
+        ul li{list-style: none;}
+    </style>
+</head>
+<body>
+
+    <script>
+        /*
+            递归 --- 同一个问题 从大 到 小的过程  逆向思维
+            阶乘 n! = n * (n-1) * (n-2) * .... * (n-m)
+         */
+
+        function fn(n){
+            if(n == 1)return 1;
+            return n * fn(n-1);
+        }
+
+        // console.log(fn(5))
+
+        function a(){
+            return b();
+        }
+
+        function b(){
+            return a();
+        }
+
+        // a();
+    </script>
+</body>
+</html>

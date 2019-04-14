@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Examples</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+        <style type="text/css">
+            *{
+                margin:0;
+                padding:0;
+            }
+            ul{
+                list-style: none;
+            }
+            .wrap{
+                width:900px;
+                margin:5px auto;
+                position: relative;
+            }
+            .list{
+                position: relative;
+                height:550px;
+            }
+            .list>li{
+                position: absolute;
+                display: none;
+            }
+            .list>li img{
+                width:900px;
+                height:550px;
+                display:block;
+            }
+            .btn{
+                position: absolute;
+                bottom:30px;
+            }
+            .btn>li{
+                float:left;
+                width:8px;
+                height:8px;
+                border-radius: 50%;
+                background-color: rgba(255,255,255,0.5);
+                margin:5px;
+                cursor:pointer;
+            }
+            .arrow{
+                background-color: rgba(127,127,127,0.3);
+                display: block;
+                position: absolute;
+                color:#333;
+                width:30px;
+                height:30px;
+                text-align: center;
+                line-height: 30px;
+                text-decoration: none;
+                top:calc(50% - 15px);
+                opacity: 0;
+            }
+            .wrap:hover .arrow{
+                opacity: 1;
+            }
+            .pre{
+                left:10px;
+            }
+            .next{
+                right:10px;
+            }
+            .list .current{
+                display: block;
+            }
+            .btn>li:hover{
+                background-color: yellow;
+            }
+            .btn .current{
+                background-color: red;
+            }
+        </style>
+        <script type="text/javascript" src="../jquery-3.3.1.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                //生成按钮
+                var $imgli = $('.list>li');
+                var $btn = $('.btn');
+                for(var i=0;i<$imgli.length;i++){
+                    if($($imgli[i]).hasClass('current')){
+                        $btn.append($('<li></li>').addClass('current'));
+                    }else{
+                         $btn.append($('<li></li>'));
+                    }
+
+                }
+                var $wrap = $('.wrap')
+                $btn.css({
+                    left:($wrap.width() - $btn.width())/2
+                });
+
+                function move(index){
+                    var $currentImg = $('.list>li[class="current"]');
+                    var $toImg = $('.list>li').eq(index);
+                    $currentImg.removeClass('current');
+                    $currentImg.fadeOut();
+                    $toImg.fadeIn();
+                    $toImg.addClass("current");
+                    $('.btn>li[class="current"]').removeClass("current");
+                    $('.btn>li').eq(index).addClass("current");
+                }
+
+                //点击pre
+                $('.pre').click(function(){
+                    //找到current元素前面的元素
+                    var $currentImg = $('.list>li[class="current"]');
+                    var $prev = $currentImg.prev();
+                    if($prev.length==0){
+                        $prev = $currentImg.parent().children().last();
+                    }
+                    var index = $('.list>li').index($prev);
+                    move(index);
+
+                });
+                //点击next
+                $('.next').click(function(){
+                    //找到current元素前面的元素
+                    var $currentImg = $('.list>li[class="current"]');
+                    var $next = $currentImg.next();
+                    if($next.length==0){
+                        $next = $currentImg.parent().children().first();
+                    }
+                    var index = $('.list>li').index($next);
+                    move(index);
+                });
+                $('.btn>li').click(function(){
+                    var index = $('.btn>li').index($(this));
+                    move(index);
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="wrap">
+            <ul class="list">
+                <li class="current"><img src="img/1.jpg" alt="1"></li>
+                <li><img src="img/2.jpg" alt="2"></li>
+                <li><img src="img/3.jpg" alt="3"></li>
+                <li><img src="img/4.jpg" alt="4"></li>
+                <li><img src="img/5.jpg" alt="5"></li>
+            </ul>
+            <ul class="btn">
+            </ul>
+            <a href="javascript:void(0)" class="arrow pre">&lt;</a>
+            <a href="javascript:void(0)" class="arrow next">&gt;</a>
+        </div>
+    </body>
+</html>

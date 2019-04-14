@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>拖拽</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+        <style type="text/css">
+        body{
+            height:1000px;
+        }
+            #box{
+                background-color: red;
+                width:100px;
+                height:100px;
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box"></div>
+    </body>
+    <script type="text/javascript">
+        box.onmousedown=function(e){
+            box.mouseKey = "1";
+            box.ox = e.pageX - box.offsetLeft;
+            box.oy = e.pageY - box.offsetTop;
+            console.log(box.offsetLeft);
+        }
+        document.onmouseup = function(e){
+
+            box.mouseKey = "0";
+
+        }
+        document.onmousemove = function(e){
+            if(box.mouseKey == "1"){
+                var maxw = window.innerWidth - box.offsetWidth;
+                var maxH = window.innerHeight - box.offsetHeight;
+                var x = e.pageX;
+                var y = e.pageY;
+
+                box.style.left = (x - box.ox)+"px";
+                box.style.top = (y - box.oy)+"px";
+            }
+        }
+
+
+    </script>
+</html>

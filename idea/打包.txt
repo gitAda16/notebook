@@ -1,0 +1,1 @@
+在idea中，生成artifacts时，选择jar的时候，要求设置Manifest file路径只选到项目路径

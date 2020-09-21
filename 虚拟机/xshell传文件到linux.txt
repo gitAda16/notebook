@@ -1,0 +1,2 @@
+输入命令rz
+如果提示命令找不到，则yum -y install lrzsz

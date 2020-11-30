@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>关系</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: #333;}
+        ul li{list-style: none;}
+        div{font-size: 26px;font-weight: bold;}
+    </style>
+</head>
+<body>
+    <div>prev</div>
+    prev text
+    <div id="box">
+        文本1
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        文本2
+    </div>
+    next text
+    <div>next</div>
+
+
+    <div>aaa</div>
+    <div>bbb</div>
+    <div>ccc</div>
+    <div>ddd</div>
+    <script>
+        /*
+            节点间的关系  属性操作
+                dom中只有父子关系 没有爷孙关系
+
+                看到有 Element 都是兼容问题 带Element都ie9+ 以上
+                儿子 第一个儿子 最后一个儿子 所有儿子
+                    childNodes          会获取到非元素节点
+                    children            获取元素节点   推荐!!
+                    firstChild          会获取到非元素节点  IE9- 可以获取到元素节点的, 没有写文本的
+                    firstElementChild   获取元素节点
+                    lastChild           会获取到非元素节点  IE9- 可以获取到元素节点的, 没有写文本的
+                    lastElementChild    获取元素节点
+                兄弟 上一个兄弟 下一个兄弟 所有兄弟(除去自己)
+                    previousSibling
+                    previousElementSibling
+                    nextSibling
+                    nextElementSibling
+                父亲
+                    parentElement (无兼容问题)
+                    parentNode
+
+            写兼容处理 其实就是看你有的我有没有 通过这个来判断
+         */
+
+        var boxDom = document.getElementById("box")
+        // alert(boxDom.parentNode)
+        // alert(boxDom.parentElement)
+        // console.log(boxDom.childNodes)
+        // console.log(boxDom.children)
+
+        // alert(boxDom.firstChild)
+        // alert(boxDom.firstElementChild)
+
+        // 获取到 el底下的 第一个元素节点
+        function first(el){
+            var firstObj = null;
+            // 非IE
+            if(el.firstElementChild){
+                firstObj = el.firstElementChild
+            }else{
+                // ie9-
+                // 如果拿得不是元素节点 继续找
+                firstObj = el.firstChild;
+                // while(firstObj && firstObj.nodeType != 1){
+                //     firstObj = firstObj.nextSibling;
+                // }
+
+                if(firstObj && firstObj.nodeType != 1)firstObj = next(firstObj)
+            }
+            return firstObj;
+        }
+
+        function last(el){
+            var lastObj = null;
+            // 非IE
+            if(el.lastElementChild){
+                lastObj = el.lastElementChild
+            }else{
+                // ie9-
+                // 如果拿得不是元素节点 继续找
+                lastObj = el.lastChild;
+                // while(lastObj && lastObj.nodeType != 1){
+                //     lastObj = lastObj.previousSibling;
+                // }
+                if(lastObj && lastObj.nodeType != 1)lastObj = prev(lastObj);
+            }
+            return lastObj;
+        }
+
+        // first(boxDom).style.color = "red"
+        // last(boxDom).style.color = "green"
+
+
+        function next(el){
+            var nextObj = null;
+            if(el.nextElementSibling){
+                nextObj = el.nextElementSibling;
+            }else{
+                nextObj = el.nextSibling;
+                if(nextObj && nextObj.nodeType != 1)nextObj = next(nextObj)
+                // while(nextObj.nodeType != 1){
+                //     nextObj = nextObj.nextSibling;
+                // }
+            }
+            return nextObj;
+        }
+
+        function prev(el){
+            var prevObj = null;
+            if(el.previousElementSibling){
+                prevObj = el.previousElementSibling;
+            }else{
+                prevObj = el.previousSibling;
+                if(prevObj && prevObj.nodeType != 1)prevObj = prev(prevObj)
+                // while(prevObj.nodeType != 1){
+                //     prevObj = prevObj.nextSibling;
+                // }
+            }
+            return prevObj;
+        }
+        // next(boxDom).style.color = "pink";
+        // prev(boxDom).style.color = "#450EB6";
+
+
+        // 找到所有兄弟 但是不包括自己  返回数组
+        // 作业
+        function siblings(el){
+            var parent = el.parentNode;
+            var children = parent.children;
+            // var arr = [].slice.call(children);
+            var arr = [];
+            for(var i=0;i<children.length;i++){
+                arr.push(children[i])
+            }
+            // 装成数组
+            var index = indexOf(arr, el)
+            if(index != -1)arr.splice(index, 1);
+            return arr;
+        }
+
+        function indexOf(arr, el){
+            var index = -1;
+            for(var i=0;i<arr.length;i++){
+                if(arr[i] == el){
+                    index = i;
+                    break;
+                }
+            }
+            return index;
+        }
+
+        var siblingsBox = siblings(boxDom);
+        for(var i=0;i<siblingsBox.length;i++){
+            siblingsBox[i].style.color = "#DA3E0E"
+        }
+    </script>
+</body>
+</html>

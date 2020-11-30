@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <style>
+    #box{
+        width:100px;
+        height:100px;
+        background-color: pink;
+        border:5px solid red;
+        padding:5px;
+        margin:5px;
+    }
+    </style>
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+    $(document).ready(function() {
+       console.log($('#inner1').parent());
+       console.log($('#inner1').parents());
+       console.log($('#inner1').closest('.b'));
+    });
+
+     </script>
+</head>
+
+<body>
+    <div id="body" class="b">
+        <div class="b">
+            <div id="inner1" class="b">1</div>
+        </div>
+    </div>
+</body>
+
+</html>

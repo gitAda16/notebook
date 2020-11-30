@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <script type="text/javascript">
+    var name = "out";
+    var obj = {
+        a:1,
+        b:2
+    }
+    var obj2 = {
+        c:3,
+        b:4
+    }
+    function mix(){
+        var obj = {};
+        var len = arguments.length;
+        if(len<1) return {};
+        for(var i=0;i<len;i++){
+            for(var k in arguments[i]){
+                if(arguments[i].hasOwnProperty(k)){
+                    obj[k] = arguments[i][k];
+                }
+            }
+        }
+        return obj;
+    }
+    var obj3 = mix(obj);
+
+    for(var k in obj3){
+        console.log(k+'---'+obj3[k]);
+    }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

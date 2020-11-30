@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>position</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+        <style type="text/css">
+            .out{
+                width:200px;
+                height:200px;
+                border:2px dashed #979899;
+                padding:10px;
+                position: relative;
+                /*position: relative;
+                top:10px;
+                left:10px;*/
+            }
+            .in{
+                width:100px;
+                height:100px;
+                background-color: pink;
+                position: absolute;
+                top:10px;
+                left:10px;
+            }
+            .in1{
+                width:100px;
+                height:100px;
+                background-color: burlywood;
+                position: relative;
+                top:20px;
+                left:20px;
+            }
+            .out_scroll{
+                width:200px;
+                height: 200px;
+                border: 2px dashed #979899;
+                overflow: scroll;
+                /*padding:10px 0;*/
+            }
+            .in_st{
+                width:100px;
+                height:100px;
+                background-color: greenyellow;
+                position: absolute;
+                top:60px;
+                left:20px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <div class="out">
+            <div class="in"></div>
+            <div class="in1"></div>
+        </div>
+
+        <div class="out_scroll">
+            <div style="width:350px;height: 50px;background-color: green">
+            </div>
+            <div class="in_st" id="id1"></div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div> -->
+        <style type="text/css">
+        body{
+            padding:10px;
+            font-size: small;
+        }
+        .do3{
+            width:200px;
+            height:200px;
+            background-color: yellow;
+            overflow: scroll;
+        }
+        .do4{
+            width:50px;
+            height:50px;
+            background-color: blue;
+            position: sticky;
+            top:10px;
+        }
+        .do5{
+            width:50px;
+            height:60px;
+            background-color: pink;
+        }
+        </style>
+        <div class="do3">
+            <div class="do5">高度60</div>
+                <div class="do4">高度50 top偏移10</div>
+
+        </div>
+    </body>
+</html>

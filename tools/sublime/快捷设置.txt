@@ -1,0 +1,22 @@
+[
+    {
+        "keys": ["ctrl+shift+c"],
+        "command": "copy_path"
+    }, //复制当前文件路径
+    //左侧栏快捷开关
+    {
+        "keys": ["ctrl+k"],
+        "command": "toggle_side_bar"
+    },
+
+    // chrome
+    {
+        "keys": ["f12"],
+        "command": "side_bar_files_open_with",
+        "args": {
+            "paths": [],
+            "application": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
+            "extensions": ".*"
+        }
+    }
+]

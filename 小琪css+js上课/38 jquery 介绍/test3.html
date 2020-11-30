@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Examples</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+        <style type="text/css">
+            body{
+                height:900px;
+            }
+            .box{
+                width:100px;
+                height:100px;
+                background-color: red;
+                position: absolute;
+            }
+        </style>
+        <script type="text/javascript" src="jquery-3.3.1.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                $('button').click(function(){
+                    $('div').stop(true,true).animate({left:"+=100px"},2000);
+                })
+        });
+        </script>
+    </head>
+    <body>
+        <button>click</button>
+        <div class="box"></div>
+    </body>
+</html>

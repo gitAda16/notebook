@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Examples</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+        <style type="text/css">
+            .box{
+                width:100px;
+                height:100px;
+                position: absolute;
+                background-color: pink;
+                cursor: pointer;
+                border:5px solid red;
+            }
+            .out{
+                width:500px;
+                height:500px;
+                /*background-color: yellow;*/
+                position: relative;
+                border:5px solid black;
+            }
+        </style>
+        <script type="text/javascript" src="../jquery-1.12.4.js"></script>
+    </head>
+    <body>
+        <div class="out">
+            <div class="box"></div>
+            <div class="box" style="left:200px"></div>
+        </div>
+    </body>
+    <script type="text/javascript">
+
+        function drag($source,$parent){
+            $source = $('.box');
+            $parent = $('.out');
+            $source.mousedown(function(e){
+                //只处理鼠标左键
+                if(e.button!='0') return;
+                var $dragItem = $(this);
+                console.log('a');
+                $parent.data('moveobj',$dragItem);
+                var position = $dragItem.position();
+                $dragItem.data('mouseposition',{left:e.pageX - position.left,top:e.pageY - position.top});
+            });
+            $source.mouseup(function(e){
+                //只处理鼠标左键
+                if(e.button!='0') return;
+                var $dragItem = $parent.data('moveobj');
+                if(!$dragItem) return;
+                $dragItem.css({
+                    zIndex:'auto'
+                });
+                $parent.removeData('moveobj');
+            });
+            $parent.mouseleave(function(e){
+                //只处理鼠标左键
+                if(e.button!='0') return;
+                var $dragItem = $parent.data('moveobj');
+                if(!$dragItem) return;
+                $dragItem.css({
+                    zIndex:'auto'
+                });
+                $parent.removeData('moveobj');
+            })
+            $parent.mousemove(function(e){
+                var $dragItem = $(this);
+                var $dragItem = $parent.data('moveobj');
+                if(!$dragItem) return;
+                var position = $dragItem.data('mouseposition');
+                var top = e.pageY -position.top;
+                var left = e.pageX - position.left;
+                if(top<0){
+                    top=0;
+                }else if(top>$parent.height()-$dragItem.outerHeight()){
+                    top=$parent.height()-$dragItem.outerHeight();
+                }
+                if(left<0){
+                    left=0;
+                }else if(left>$parent.width()-$dragItem.outerWidth()){
+                    left=$parent.width()-$dragItem.outerWidth();
+                }
+                console.log(top,left);
+                $dragItem.css({
+                    top:top,
+                    left: left,
+                    zIndex:500
+                })
+            });
+        }
+        drag();
+    </script>
+</html>

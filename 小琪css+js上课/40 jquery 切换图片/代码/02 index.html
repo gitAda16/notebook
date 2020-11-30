@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: #333;}
+        ul li{list-style: none;}
+        body{background-color: #333;}
+        .wrap{position: relative;width: 900px;margin: 30px auto;overflow: hidden;}
+        .list{position: relative;height: 550px;width: 1000%;}
+        .list li{width: 900px;height: 450px;float: left;}
+        .list li img{width: 900px;height: 550px;display: block;}
+        .btn{position: absolute;}
+        .btn li{float: left;width: 8px;height: 8px;border-radius: 50%;background-color: rgba(255,255,255,.5);margin: 3px;}
+        .btn li.active{background-color: #f60;}
+        .arrow{position: absolute;top: calc(50% - 15px);width: 45px;height: 30px;text-align: center;line-height: 30px;font-size: 26px;color: #fff;background: rgba(0,0,0,.4);opacity: 0;transition: all 1s}
+        .next{right: 0;}
+        .wrap:hover .arrow{opacity: 1;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <ul class="list">
+            <li><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/2.jpg" alt=""></li>
+            <li><img src="img/3.jpg" alt=""></li>
+            <li><img src="img/4.jpg" alt=""></li>
+        </ul>
+        <ul class="btn"></ul>
+        <a href="javascript:void(0)" class="arrow prev">&lt;</a>
+        <a href="javascript:void(0)" class="arrow next">&gt;</a>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+        /*
+            banner
+                左右移动的
+         */
+
+        $(function(){
+            var $btn = $('.btn'),
+                $img = $('.list'),
+                $width = $img.children()[0].offsetWidth,
+                len = $img.children().length,
+                timer = null,
+                _index = 0;
+            // 生成小圆点
+            for(var i=0;i<len;i++){
+                $btn.append($('<li></li>'));
+            }
+            $btn.center().children().first().addClass('active');
+
+            $btn.on('mouseover', 'li', function(){
+                var index = $(this).index();
+                _index = index;
+                move(index);
+            });
+
+            $('.next').on('click',function(){
+                _index = ++_index % len;
+                move(_index);
+            });
+
+            $('.prev').on('click',function(){
+                if(--_index<0)_index = len-1;
+                move(_index);
+            });
+
+
+            function move(index){
+                $img.stop(true).animate({left: -index*$width});
+                $btn.find('li').eq(index).addClass('active').siblings().removeClass('active');
+            }
+        });
+
+
+
+
+        $.fn.center = function(){
+            var $width = $('.wrap').width() - this.width();
+            return this.each(function(){
+                $(this).css({
+                    left: $width/2,
+                    bottom: 10
+                })
+            });
+        };
+    </script>
+</body>
+</html>

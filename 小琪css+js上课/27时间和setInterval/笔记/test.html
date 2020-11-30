@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Examples</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+
+    </head>
+    <body>
+        <p id="test"></p>
+    </body>
+    <script type="text/javascript">
+            // var date = new Date();
+            // var el = document.getElementById("test");
+            // el.innerText = date.getFullYear()+"\n\r";
+            // el.innerText += date.getMonth()+"\n\r";
+            // el.innerText += date.getDate()+"\n\r";
+            // el.innerText += date.getDay()+"\n\r";
+            // el.innerText += date.getHours()+"\n\r";
+            // el.innerText += date.getMinutes()+"\n\r";
+            // el.innerText += date.getSeconds()+"\n\r";
+            // console.log(date);
+            var i = 0;
+            function sleep(d){
+              for(var t = Date.now();Date.now() - t <= d;);
+            }
+
+            // sleep(5000); //当前方法暂停5秒
+            setTimeout(function(){console.log("asdf")}, 5000);
+            // setInterval(function(){
+            //     console.log("1");
+            //     sleep(5000);
+            //     console.log("2");
+            // }, 1000);
+            // var t = setInterval(function(){
+            //     var el = document.getElementById("test");
+            //     var date = new Date();
+            //     el.innerText = date.toTimeString();
+            //     i++;
+            //     if(i>10){
+            //     clearInterval(t)
+            // }
+            // },1000);
+        </script>
+</html>

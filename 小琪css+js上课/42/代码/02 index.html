@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: #333;}
+        ul li{list-style: none;}
+        div{position: absolute;width: 100px;height: 100px;background: red;}
+        .b{left: 300px;top: 300px;}
+    </style>
+</head>
+<body>
+    <div class="a"></div>
+    <div class="b"></div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+
+        $('.a').on('mousedown', function(e){
+            var posx = e.pageX - this.offsetLeft;
+            var posy = e.pageY - this.offsetTop;
+            var $obj = $(this);
+            $(document).on('mousemove', function(e){
+                var x = e.pageX - posx;
+                var y = e.pageY - posy;
+                $obj.css({
+                    left: x,
+                    top: y
+                })
+
+                if(pz($obj[0], $('.b')[0])){
+                    $('.b').css('background','green');
+                }else{
+                    $('.b').css('background','red');
+                }
+            })
+            $(document).on('mouseup', function(){
+                $(document).off();
+            })
+            return false;
+        });
+
+        function pz(obj1, obj2){
+            var T = obj1.offsetTop;
+            var L = obj1.offsetLeft;
+            var R = obj1.offsetWidth + L;
+            var B = obj1.offsetHeight + T;
+
+            var T1 = obj2.offsetTop;
+            var L1 = obj2.offsetLeft;
+            var R1 = obj2.offsetWidth + L1;
+            var B1 = obj2.offsetHeight + T1;
+            return !(R < L1 || B < T1 || L > R1 || T > B1);
+        };
+
+
+
+        var arr = [1,2,3,4,0];
+        var max = Number.MAX_VALUE;
+        for(var i = 0;i<arr.length;i++){
+            if(arr[i] < max){
+                max = arr[i];
+            }
+        }
+        alert(max)
+    </script>
+</body>
+</html>

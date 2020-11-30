@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Examples</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+        <style type="text/css">
+            #box{
+                width:100px;
+                height:100px;
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box"></div>
+    </body>
+    <script type="text/javascript">
+        box.addEventListener('click', function(){
+            console.log('box');
+        }, false);
+        document.body.addEventListener('click',function(){
+            console.log('body');
+        },false);
+        document.documentElement.addEventListener('click',function(){
+            console.log('documentElement');
+        },false);
+        window.addEventListener('click',function(){
+            console.log('window');
+        },false);
+
+        box.addEventListener('click', function(){
+            console.log('box1');
+        }, false);
+        document.body.addEventListener('click',function(){
+            console.log('body1');
+        },false);
+        document.documentElement.addEventListener('click',function(){
+            console.log('documentElement1');
+        },false);
+        window.addEventListener('click',function(){
+            console.log('window1');
+        },false);
+    </script>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: #333;}
+        ul li{list-style: none;}
+        body{background-color: #333;}
+        .wrap{position: relative;width: 900px;margin: 30px auto;}
+        .wrap .over{width: 900px;height: 550px;position: absolute;top: 0;left: 0;z-index: 9}
+        .list{position: relative;height: 550px;}
+        .list li{position: absolute;width: 900px;height: 550px;display: none;}
+
+        .list li img{width: 900px;height: 550px;display: block;}
+        .btn{position: absolute;z-index: 10;}
+        .btn li{float: left;width: 8px;height: 8px;border-radius: 50%;background-color: rgba(255,255,255,.5);margin: 3px;}
+        .btn li.active{background-color: #f60;}
+        .arrow{position: absolute;top: calc(50% - 15px);width: 45px;height: 30px;text-align: center;line-height: 30px;font-size: 26px;color: #fff;background: rgba(0,0,0,.4);opacity: 0;transition: all 1s;z-index: 11}
+        .next{right: 0;}
+        .wrap:hover .arrow{opacity: 1;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <ul class="list">
+            <li style="display: block;"><img src="image/1.jpg" alt=""></li>
+            <li><img src="image/2.jpg" alt=""></li>
+            <li><img src="image/3.jpg" alt=""></li>
+            <li><img src="image/4.jpg" alt=""></li>
+        </ul>
+        <ul class="btn"></ul>
+        <a href="javascript:void(0)" class="arrow prev">&lt;</a>
+        <a href="javascript:void(0)" class="arrow next">&gt;</a>
+        <div class="over"></div>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+        /*
+            banner
+                碎片化
+                其实就是很多个小格子拼到一起
+                格子 w -- 50 h -- 50
+                一行应该是多少个
+                一列应该是多少个
+                每一个格子的图片的位置应该是多少
+         */
+
+        $(function(){
+            var $img = $(".list li");
+            var len = $img.length;
+            var $btn = $(".btn");
+            var $wrap = $('.wrap');
+            var index = 0;
+            // 生成小圆点
+            // for(var i=0;i<len;i++){
+            //     $btn.append($('<li></li>'));
+            // }
+            // $btn.center().children().first().addClass('active');
+
+            // $btn.on('click', 'li', function(){
+            //     var index = $(this).index();
+            //     var src = $img.eq(index).children().first().attr('src');
+            //     $img.eq(index).fadeIn().siblings().fadeOut();
+            //     ceils(src);
+            // });
+
+            $('.next').on('click', function(){
+                index++;
+                index %= len;
+                var cur = $img.eq(index);
+                var src = '';
+                if(cur[0].previousElementSibling){
+                    src = cur.prev().children().first().attr('src');
+                }else{
+                    src = $img.last().children().first().attr('src');
+                }
+                $img.eq(index).fadeIn().siblings().fadeOut();
+                ceils(src);
+            });
+
+            // 铺一次看效果
+            function ceils(src){
+                $('.over').empty();
+                var w = 50,
+                    h = 50,
+                    // 计算小格子一行放多少个
+                    cells = $img.first().width() / w,
+                    // 计算小格子一列放多少个
+                    rows = $img.first().height() / h,
+                    arr = [];
+                for(var i=0;i<cells;i++){
+                    for(var j=0;j<rows;j++){
+                        var $div = $("<div></div>");
+                        $div.css({
+                            width: w,
+                            height: h,
+                            position: 'absolute',
+                            top: j*h,
+                            left: i*w,
+                            backgroundImage: 'url('+src+')',
+                            backgroundPosition: -i*w+'px '+(-j*h)+'px',
+                            backgroundSize: '900px 550px'
+                        }).appendTo($('.over'));
+                        $div.x = j;
+                        $div.y = i;
+                        arr.push($div);
+                    }
+                }
+
+                // 最大值 27
+                var max = cells + rows - 2;
+                var count = 0;
+                var timer = setInterval(function(){
+                    arr.forEach(function(item){
+                        if(item.x + item.y === count){
+                            item.css({
+                                transform: 'rotate(270deg)',
+                                transition: 'all 1s'
+                            }).fadeOut('slow');
+                        }
+                    });
+                    count++
+                    if(count > max)clearInterval(timer);
+                }, 30);
+            }
+
+
+
+
+        });
+
+        $.fn.center = function(){
+            var $width = $('.wrap').width() - this.width();
+            return this.each(function(){
+                $(this).css({
+                    left: $width/2,
+                    bottom: 10
+                })
+            });
+        };
+    </script>
+</body>
+</html>

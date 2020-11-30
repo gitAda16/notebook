@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>外边距溢出</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: #333;}
+        ul li{list-style: none;}
+        #a{margin: 30px;width: 100px;height: 100px;background-color: red}
+        #b{margin: 30px;width: 100px;height: 100px;background-color: blue}
+    </style>
+</head>
+<body>
+    <!--
+        让b形成独立的区域  格式块上下文
+        我们在使用的时候 会用到 但是你不知道他是这个东西而已
+    -->
+    <div id="a"></div>
+    <div style="overflow: hidden;">
+        <div id="b" style="float: left;"></div>
+    </div>
+</body>
+</html>

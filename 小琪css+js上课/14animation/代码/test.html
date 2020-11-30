@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>animation</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+        <style type="text/css">
+        .out{
+            width:300px;
+            height:300px;
+            background-color: yellow;
+            animation:3s movedown 5s reverse both paused;
+            position: absolute;
+        }
+        @keyframes movedown{
+            from{
+                /*width:300px;*/
+                transform:translate(0px,10px);
+                /*top:0px;*/
+            }
+            to{
+                /*height: 50px;*/
+                transform:translate(100px,10px);
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <div class="out">
+
+        </div>
+    </body>
+</html>

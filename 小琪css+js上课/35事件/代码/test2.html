@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Examples</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+        <style type="text/css">
+        body{
+            height:900px;
+        }
+            #box{
+                width:300px;
+                height:30px;
+                background-color: red;
+                position: absolute;
+                color:#fff
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box"></div>
+    </body>
+    <script type="text/javascript">
+        document.onmousemove=function(e){
+            e = e||window.event;
+            var x = e.clientX;
+            var y = e.clientY;
+            var xx = e.pageX;
+            var yy = e.pageY;
+            // var ob = getXY(e);
+            // var x = ob.x;
+            // var y = ob.y;
+            // var xx = ob.x;
+            // var yy = ob.y;
+            box.style.top =y +"px";
+            box.style.left = x+"px";
+            box.innerText = "clientx:"+x+"client:"+y + "pagex:"+xx+"pagey:"+yy;
+        }
+        function getXY(e){
+            if(e){
+                return{x:e.pageX,
+                    y:e.pageY};
+            }else{
+            var cleft = document.documentElement.scrollleft
+            var ctop = document.documentElement.scrolllTop;
+            return{
+                x:event.clientX+cleft,
+                y:event.clientY+ctop
+            }
+        }
+    }
+
+    </script>
+</html>

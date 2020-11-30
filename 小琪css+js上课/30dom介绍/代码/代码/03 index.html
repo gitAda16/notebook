@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: #333;}
+        ul li{list-style: none;}
+    </style>
+</head>
+<body>
+    <!-- <div id="box">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div> -->
+
+    <div id="xq"> 123 </div>
+    <script>
+        /*
+            dom 节点有很多类型
+                五个方法 获取节点的方法
+                无兼容问题
+                id:     document.getElementById()   获取的是唯一的元素
+                tag:    document.getElementsByTagName()    获取的集合collection
+
+                兼容问题 IE9+
+                class:  document.getElementsByClassName()  获取的集合collection
+                选择器:  document.querySelector(#id .class tag > li)  唯一的 第一个
+                选择器:  document.querySelectorAll()  元素集合
+
+            每一个节点nodeType nodeValue nodeName
+
+         */
+        // var spanDom = document.querySelector('#box > span');
+        // console.log(spanDom)
+
+        var xq = document.getElementById("xq");
+        // console.log(xq.nodeType, xq.nodeName, xq.nodeValue)   // 元素节点
+        // console.log(xq.getAttributeNode('id').nodeType, xq.getAttributeNode('id').nodeName, xq.getAttributeNode('id').nodeValue)  // 属性节点
+        // console.log(xq.firstChild.nodeType, xq.firstChild.nodeName, xq.firstChild.nodeValue)   // 文本节点
+        /*
+            1 "DIV"    null
+            2 "id"     "xq"
+            3 "#text"  " 123 "
+         */
+
+        // var isElement = function(el){
+        //     return el.nodeType == 1;
+        // }
+    </script>
+</body>
+</html>

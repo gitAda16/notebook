@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>float</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: #333;}
+        ul li{list-style: none;}
+        #outer{width: 300px;height: 300px;border: 1px solid #333;}
+        #inner{width: 80px;height: 80px;background-color: red;float: left;}
+        #a{width: 100px;height: 100px;background-color: red;float: left;}
+        #b{width: 100px;height: 200px;background-color: green;}
+    </style>
+</head>
+<body>
+    <!--
+        背景   图层  文字,边框 === 图片 === 颜色
+            background
+                image
+                repeat
+                color
+                size
+                position
+                attachment
+            渐变色
+                ie
+    -->
+
+    <!--
+        浮动 float  相当于 飘起来了
+        文档流  标签 分为两种 块级元素 行内元素
+        从左往右 从上往下的
+        块级元素 独占一行
+        行内元素 不会独占一行
+
+        特性1 浮动的元素会脱离文档流
+
+        1. 好处  两个块级元素可以放在一行   节省空间
+
+        向左排列的状态
+        float 定位
+    -->
+    <div id="outer">
+        <div id="inner"></div>两个块级元素可以放在一行两个块级元素可以放在一行两个块级元素可以放在一行两个块级元素可以放在一行两个块级元素可以放在一行两个块级元素可以放在一行两个块级元素可以放在一行两个块级元素可以放在一行两个块级元素可以放在一行两个块级元素可以放在一行
+    </div>
+
+    <div id="a"></div>
+    <div id="b"></div>
+</body>
+</html>

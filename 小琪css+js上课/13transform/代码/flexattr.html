@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>flex attr</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+        <style type="text/css">
+            .out{
+                width:300px;
+                height:300px;
+                /*border:1px solid grey;*/
+                background-color: grey;
+                display: flex;
+            }
+            .a{
+                /*width:150px;
+                height:30px;*/
+                background-color: chocolate;
+                /*flex:0 1 auto;*/
+                flex-shrink: 1;
+                flex-basis: 20px;
+            }
+            .b{
+                /*width:90px;
+                height:30px;*/
+                background-color: brown;
+                /*flex:0 1 auto;*/
+                flex-shrink: 1;
+                flex-basis: 220px;
+            }
+            .c{
+                /*width:90px;
+                height:30px;*/
+                background-color: purple;
+                /*flex:0 1 auto;*/
+                flex-shrink: 1;
+                flex-basis: 120px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="out">
+            <div class="a">1</div>
+            <div class="b">2</div>
+            <div class="c">3</div>
+        </div>
+    </body>
+</html>

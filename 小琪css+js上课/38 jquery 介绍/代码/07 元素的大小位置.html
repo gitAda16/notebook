@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: #333;}
+        ul li{list-style: none;}
+        body{height: 2200px;}
+        #box{width: 400px;height: 300px;border: 10px solid; padding: 5px;background-color: red;margin: 1px;position: relative;top: 100px;left: 100px;}
+        #a{width: 100px;height: 100px;position: absolute;top: 100px;left: 100px;background-color: #333}
+
+        .up{position: fixed;width: 50px;height: 50px;bottom: 10px;right: 10px;background-color:
+            red;display: none;}
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="a"></div>
+    </div>
+
+    <div class="up">up</div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+        /*
+            元素大小
+
+            位置
+                position() ===> top/left  定位父级的
+                offset() ===> top/left    窗口的
+         */
+        // console.log($('#box').width());  // width
+        // console.log($('#box').innerWidth()); // width + padding
+        // console.log($('#box').outerWidth(true)); // width + padding + border + margin(看参数)
+
+        // var pos = $('#a').offset();
+        // var pos = $('#a').position();
+        // console.log(pos.left, pos.top);
+
+
+        $(window).scroll(function(){
+            var ctop = $(this).scrollTop();
+            if(ctop >= 500){
+
+                // 重复添加 所以先清除一下之前的事件
+                $('.up').show().off('click').click(function(){
+                    // $(window).scrollTop(0);
+                    $('html').animate({
+                        scrollTop : 0
+                    }, 1000)
+                });
+            }else{
+                $('.up').hide();
+            }
+        })
+    </script>
+</body>
+</html>

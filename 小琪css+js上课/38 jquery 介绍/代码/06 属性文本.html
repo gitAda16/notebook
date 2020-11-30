@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: #333;}
+        ul li{list-style: none;}
+        .red{color:red}
+        .green{color: green}
+        .a{width: 300px;padding: 50px;background-color: red}
+        .b{width: 200px;padding: 50px;background-color: green}
+        .c{width: 100px;padding: 50px;background-color: #333}
+    </style>
+</head>
+<body>
+    <div class="box red">点击</div>
+    <input type="text">
+    <input type="checkbox" checked="true">
+
+    <div class="a">
+        <div class="b">
+            <div class="c">asdasdsd</div>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+        /*
+            属性文本操作
+                html()
+                text()
+                val()
+
+            属性操作
+                attr
+                removeAttr
+
+                prop  很少用它设置  操作合法属性
+                removeProp
+         */
+        // $('.box').html("<p>123</p>")
+        // $('.box').text("<p>123</p>")
+
+        // $('input[type=text]').val('123');
+
+        // $('.box').attr({
+        //     name: 'xq',
+        //     age: 18
+        // }).removeAttr('name')
+
+        // $('input[type=checkbox]').prop('checked', 'true')
+        // $('input[type=checkbox]').attr('checked', 'true')
+        // console.log($('input[type=checkbox]').prop('checked'));
+        // console.log($('input[type=checkbox]').attr('checked'));
+
+        $('.box').click(function(){
+            // $(this).addClass('red green');
+            // $(this).toggleClass('red');
+        });
+
+
+        $('.a').mousedown(function(eve){
+            alert(1);
+        })
+
+        $('.b').mousedown(function(){
+            alert(2);
+        })
+
+        $('.c').mousedown(function(e){
+            // e.stopPropagation();
+            alert(3);
+            // 既可以阻止默认事件 也可以阻止冒泡
+            return false;
+        })
+    </script>
+</body>
+</html>

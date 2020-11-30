@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>test perspective</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+        <style type="text/css">
+            .out{
+                width:100px;
+                height: 100px;
+                -webkit-perspective: 600;
+                transform-style: preserve-3d;
+                margin:100px auto;
+                border:2px dashed #888;
+            }
+            .per{
+                width:100px;
+                height: 100px;
+                background-color: pink;
+                transform-origin: left;
+                /*animation: move 2s infinite;*/
+            }
+            @keyframes move{
+                from{
+                    transform: rotateY(0deg);
+                    z-index: -1;
+                }
+                to{
+                    transform: rotateY(-180deg);
+                    z-index: 1;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="out">
+            <div class="per">
+                <div style="width:50px;height: 50px; background-color: yellow;"></div>
+            </div>
+        </div>
+    </body>
+</html>

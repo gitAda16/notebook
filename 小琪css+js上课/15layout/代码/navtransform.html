@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>nan transform</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: #333;
+    }
+    ul li {
+        list-style: none;
+    }
+
+    .list {
+        width: 404px;
+        margin: 100px auto;
+    }
+
+    .list li{
+        position: relative;
+        float: left;
+        width: 100px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        color: #fff;
+        background-color: brown;
+        border-right: 1px solid;
+        cursor: pointer;
+        /*-webkit-perspective: 600;
+        transform-style: preserve-3d;*/
+    }
+    .list .menu{
+        position: absolute;
+        top: 30px;
+        transform-origin: top center;
+        transform: scaleY(0) rotateY(-180deg);
+        transition: all 0.5s
+    }
+    .list .menu li{
+        width:100px;
+        height:30px;
+        background-color: grey;
+        color:#fff;
+        text-align: center;
+        line-height: 30px;
+    }
+    .list li:hover .menu{
+        transform: scaleY(1) rotateY(0deg);
+    }
+    </style>
+</head>
+
+<body>
+    <ul class="list">
+        <li>
+            <span>一</span>
+            <ul class="menu">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </li>
+        <li>
+            <span>二</span>
+        </li>
+        <li>
+            <span>三</span>
+        </li>
+        <li>
+            <span>四</span>
+        </li>
+    </ul>
+</body>
+
+</html>

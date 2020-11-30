@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>文字环绕</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: #333;}
+        ul li{list-style: none;}
+        .xq{width: 300px;margin: 30px auto;border: 1px solid #333;}
+        .xq span{width: 30px;height: 30px;background-color: red;float: left;}
+        button{width: 30px;height: 30px;float:left;}
+
+        .box{width: 300px;height: 300px;border: 1px solid #333;}
+
+        #aa::first-letter{font-size: 30px;float: left;}
+
+        #list li{float: left;}
+        #list span{margin: 0 .4em;}
+    </style>
+</head>
+<body>
+
+    <!--
+        浮动了之后 原本被浏览器解析的空格没有了
+        1. 去空格              空格哪里去了?        空格也相当于文本 只是实现文字环绕效果
+        2. 导致父元素塌陷了    为什么父容器塌陷了?  脱离文档流  (待解决问题)
+        3. 浮动具有可以元素 块级化作用
+
+    -->
+    <div class="xq">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+
+    <button>1</button>&nbsp;<button>2</button>&nbsp;<button>3</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="box">
+        <div style="background: url(1.jpg);background-size: cover;width: 100px;height: 100px;float: left;"></div>
+        佳丽1 妃子2 皇后 马跃 巷子深 fbook 沫浅 佳丽1 妃子2 皇后 马跃 巷子深 fbook 沫浅
+        佳丽1 妃子2 皇后 马跃 巷子深 fbook 沫浅 佳丽1 妃子2 皇后 马跃 巷子深 fbook 沫浅
+    </div>
+
+    <div id="aa">吃了个浮动的药</div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <ul id="list">
+        <li>挥手<span>|</span></li>
+        <li>vk<span>|</span></li>
+        <li>DuckJoe<span>|</span></li>
+        <li>大西瓜<span>|</span></li>
+        <li>鱼摆摆</li>
+    </ul>
+</body>
+</html>

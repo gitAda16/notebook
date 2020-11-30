@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>layout work</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="" rel="stylesheet">
+        <style type="text/css">
+        .clearfix::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .clearfix{
+            *zoom:1;
+        }
+        .header{
+            height:100px;
+            background-color: #f12f62;
+        }
+        .content .main{
+            width:1000px;
+            margin:5px auto 0 auto;
+        }
+        .content .main .top{
+            height:100px;
+            background-color:#f15d2f;
+            margin-bottom: 5px;
+        }
+        .content .main .middle{
+            margin-bottom: 5px;
+        }
+        .middle .m_left{
+            width:49%;
+            height:240px;
+            float:left;
+            background-color:#f1be2f;
+        }
+        .middle .m_right{
+            width:50%;
+            height:240px;
+            float:right;
+        }
+        .middle .m_right div{
+            height:110px;
+            background-color:#f12fc3;
+            margin-bottom: 20px;
+        }
+        .middle .m_right div:last-child{
+            margin-bottom: 0;
+        }
+        .content .main .bottom{
+            text-align: justify;
+            text-align-last: justify;
+        }
+        .content .main .bottom div{
+            width:33%;
+            height:150px;
+            background-color:#2ff15d;
+            display: inline-block;
+
+        }
+        .footer{
+            height:80px;
+            background-color:#5d2ff1;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="header"></div>
+        <div class="content">
+            <div class="main">
+                <div class="top"></div>
+                <div class="middle clearfix">
+                    <div class="m_left"></div>
+                    <div class="m_right">
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"></div>
+    </body>
+</html>

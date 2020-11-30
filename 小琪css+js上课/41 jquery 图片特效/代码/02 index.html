@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: #333;}
+        ul li{list-style: none;}
+        body{background: #333;}
+        .wrap{display: flex;width: 850px;justify-content: space-between;position: relative;}
+        .show{width: 420px;height: 420px;}
+        .right{width: 420px;display: flex;flex-direction: column;}
+        .list{display: flex;justify-content: space-around;margin: 5px;}
+        .list li{width: 56px;height: 56px;border: 2px solid transparent}
+        .list li img{display: block;}
+        .list li:hover{border: 2px solid #f60}
+        .left{width: 420px;height: 420px;border: 1px solid #f60;overflow: hidden;position: relative;}
+        .over{width: 120px;height: 120px;position: absolute;background: rgba(0,0,0,.3);display: none;}
+        .scale_bg{position: absolute;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="over"></div>
+        <div class="right">
+            <img src="img/1.jpg" alt="" class="show">
+            <ul class="list">
+                <li><img src="img/1.jpg" alt=""></li>
+                <li><img src="img/2.jpg" alt=""></li>
+                <li><img src="img/3.jpg" alt=""></li>
+                <li><img src="img/4.jpg" alt=""></li>
+                <li><img src="img/5.jpg" alt=""></li>
+            </ul>
+        </div>
+        <div class="left">
+            <div class="scale">
+                <img src="" alt="" width="800" height="800" class="scale_bg">
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+        /*
+            两个图 一个大的一个小的
+
+        */
+
+        var $img = $('.list li');
+
+        // 等比缩放一下   原图w / 原图h = 缩放w / 缩放h
+        $img.each(function(){
+            var item = $(this).children()[0];
+            $(item).on('load', function(){
+                var w = item.width;
+                var h = item.height;
+                console.log(w, h)
+                item.width = 56;
+                item.height = (w/h) * 56;
+            })
+        })
+
+
+        $img.on('mouseover', function(){
+            $('.show')[0].src = $('.scale_bg')[0].src = $(this).children()[0].src;
+        });
+
+        var $over = $('.over');
+        $('.show').on('mouseover', function(){
+            $over.show();
+        })
+        $('.show').on('mousemove', function(e){
+            var posx = e.pageX - this.offsetLeft - $over.width()/2;
+            var posy = e.pageY - this.offsetTop - $over.height()/2;
+            var maxW = this.offsetWidth - $over.width();
+            var maxH = this.offsetHeight - $over.height();
+            posx = Math.min(posx, maxW)
+            posx = Math.max(0, posx)
+            posy = Math.min(posy, maxH)
+            posy = Math.max(0, posy)
+            $over.css({
+                left: posx,
+                top: posy,
+                cursor: 'move'
+            })
+
+            var $scale = $('.scale_bg');
+            // 小框 / maxW = 显示放大view / 图片大小
+            var ratioX = posx / maxW;
+            var ratioY = posy / maxH;
+            var cleft = ratioX * ($('.left').width() - $scale.width());
+            var ctop = ratioY * ($('.left').height() - $scale.height());
+            $scale.css({
+                left: cleft,
+                top: ctop
+            })
+        });
+
+    </script>
+</body>
+</html>
